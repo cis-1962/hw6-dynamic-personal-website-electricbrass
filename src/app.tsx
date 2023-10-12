@@ -1,4 +1,4 @@
-import Introduction from "./intro";
+import Introduction from "./components/intro";
 
 export default function App() {
   return (
