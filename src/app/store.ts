@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import introReducer from '../features/introState';
+import introReducer from '../features/introState'
+import postsReducer from '../features/postState'
 
 export const store = configureStore({
   reducer: {
-    intro: introReducer
+    intro: introReducer,
+    posts: postsReducer
   }
 });
 

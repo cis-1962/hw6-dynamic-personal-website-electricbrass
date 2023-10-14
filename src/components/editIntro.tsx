@@ -1,11 +1,11 @@
 
 import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../app/hooks'
-import { changeURL, changeDesc } from '../features/introState';
+import { changeURL, changeDesc, selectIntroImage, selectIntroDescription } from '../features/introState';
 
 export default function EditIntro({ close }: { close: () => void }) {
-  const [imageURL, setImageURL] = useState(useAppSelector((state) => state.intro.imageURL));
-  const [description, setDescription] = useState(useAppSelector((state) => state.intro.description));
+  const [imageURL, setImageURL] = useState(useAppSelector(selectIntroImage));
+  const [description, setDescription] = useState(useAppSelector(selectIntroDescription));
   const dispatch = useAppDispatch();
   return (
     <>
