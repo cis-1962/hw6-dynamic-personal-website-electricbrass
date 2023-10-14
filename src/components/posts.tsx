@@ -22,7 +22,7 @@ export default function Posts() {
     <>
       <h1 className='text-white' >Blog Posts</h1>
       <input type='button' value='New Post' className='text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-md px-4 py-2'
-      onClick={() => dispatch(newPost({imageURL: 'https://mario.wiki.gallery/images/8/89/MPS_Toad_Artwork.png', description: 'this is a new post'}))}/>
+      onClick={() => dispatch(newPost({title: 'new post',imageURL: 'https://mario.wiki.gallery/images/8/89/MPS_Toad_Artwork.png', description: 'this is a new post'}))}/>
       {editMode >= 0 &&
       <EditPost id={editMode} originalContent={posts[editMode]}
                 close={() => setEditMode(-1)}/>}
@@ -30,7 +30,7 @@ export default function Posts() {
         {/* mdn says Iterators also have a map method but it wouldnt work here unless I used array.from? */}
         {Object.entries(posts).map(([id, content]) => (
           <li key={id}>
-            <Post id={parseInt(id, 10)} imageURL={content.imageURL} description={content.description} editCB={editCB} />
+            <Post id={parseInt(id, 10)} content={content} editCB={editCB} />
           </li>
         ))}
       </ul>

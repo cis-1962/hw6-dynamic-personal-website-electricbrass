@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../app/store"
 
 export interface PostState {
+  title: string,
   imageURL: string,
   description: string
 }
