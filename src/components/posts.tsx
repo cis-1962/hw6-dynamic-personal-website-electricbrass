@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Post from "./post";
 import EditPost from "./editPost";
-import { useAppSelector, useAppDispatch } from '../app/hooks'
-import { selectPosts, newPost, editPost } from "../features/postState";
+import { useAppSelector } from '../app/hooks'
+import { selectPosts } from "../features/postState";
 
 // have edit mode represented by int instead of bool, have -1 for not edit, otherwise its a post id
 // component for editing a post takes in the post id to know which one to edit
@@ -12,9 +12,8 @@ import { selectPosts, newPost, editPost } from "../features/postState";
 // edit buttons on posts have callback passed as prop that opens edit mode
 
 export default function Posts() {
-  const dispatch = useAppDispatch();
   const posts = useAppSelector(selectPosts);
-  const [editMode, setEditMode] = useState(-1);
+  const [editMode, setEditMode] = useState(-2);
   const editCB = (id: number) => {
     setEditMode(id);
   };
@@ -22,12 +21,14 @@ export default function Posts() {
     <>
       <h1 className='text-white' >Blog Posts</h1>
       <input type='button' value='New Post' className='text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-md px-4 py-2'
-      onClick={() => dispatch(newPost({title: 'new post',imageURL: 'https://mario.wiki.gallery/images/8/89/MPS_Toad_Artwork.png', description: 'this is a new post'}))}/>
+      onClick={() => setEditMode(-1)}/>
       {editMode >= 0 &&
       <EditPost id={editMode} originalContent={posts[editMode]}
-                close={() => setEditMode(-1)}/>}
+                close={() => setEditMode(-2)} />}
+      {editMode === -1 &&
+      <EditPost id={-1} originalContent={{title: '', imageURL: '', description: ''}}
+                close={() => setEditMode(-2)} />}
       <ul>
-        {/* mdn says Iterators also have a map method but it wouldnt work here unless I used array.from? */}
         {Object.entries(posts).map(([id, content]) => (
           <li key={id}>
             <Post id={parseInt(id, 10)} content={content} editCB={editCB} />

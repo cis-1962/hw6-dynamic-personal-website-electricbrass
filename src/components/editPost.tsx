@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
-import { editPost } from "../features/postState";
+import { newPost, editPost } from "../features/postState";
 import type { PostState } from "../features/postState";
 
 export default function EditPost({ id, originalContent, close }: { id:number, originalContent: PostState, close: () => void }) {
@@ -17,10 +17,16 @@ export default function EditPost({ id, originalContent, close }: { id:number, or
       <div className='text-white'>Description</div>
       <input type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
       <input type='button' value='Cancel' onClick={close} className='text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-md px-4 py-2'/>
-      <input type='button' value='Save Changes' onClick={() => {
+      <input type='button' value='Save Changes' className='text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-md px-4 py-2'
+			onClick={id >= 0 ?
+			() => {
 				dispatch(editPost({id, content: {title, imageURL, description}}))
 				close()
-			}} className='text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-md px-4 py-2'/>
+			} :
+			() => {
+				dispatch(newPost({title, imageURL, description}))
+				close()
+			}}/>
     </>
   );
 }

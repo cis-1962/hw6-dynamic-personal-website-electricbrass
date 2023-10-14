@@ -29,11 +29,14 @@ export const postsSlice = createSlice({
     },
     editPost: (state, action: PayloadAction<{id: number, content: PostState}>) => {
       state.posts[action.payload.id] = action.payload.content;
+    },
+    deletePost: (state, action: PayloadAction<number>) => {
+      delete state.posts[action.payload];
     }
   }
 });
 
-export const { newPost, editPost } = postsSlice.actions;
+export const { newPost, editPost, deletePost } = postsSlice.actions;
 
 export const selectPosts = (state: RootState) => state.posts.posts;
 
