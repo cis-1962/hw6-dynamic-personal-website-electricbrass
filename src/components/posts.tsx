@@ -18,8 +18,8 @@ export default function Posts() {
     setEditMode(id);
   };
   return (
-    <>
-      <h1 className='text-white' >Blog Posts</h1>
+    <div className='m-4'>
+      <h1 className='text-white text-4xl' >Blog Posts</h1>
       <input type='button' value='New Post' className='text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-md px-4 py-2'
       onClick={() => setEditMode(-1)}/>
       {editMode >= 0 &&
@@ -28,13 +28,13 @@ export default function Posts() {
       {editMode === -1 &&
       <EditPost id={-1} originalContent={{title: '', imageURL: '', description: ''}}
                 close={() => setEditMode(-2)} />}
-      <ul>
+      <ul className='grid grid-cols-4'>
         {Object.entries(posts).map(([id, content]) => (
           <li key={id}>
             <Post id={parseInt(id, 10)} content={content} editCB={editCB} />
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

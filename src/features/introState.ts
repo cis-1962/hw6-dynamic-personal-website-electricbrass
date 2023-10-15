@@ -7,9 +7,8 @@ export interface IntroState {
 };
 
 const initialState: IntroState = {
-  // https://media.licdn.com/dms/image/C5603AQFiR8py9hDb2w/profile-displayphoto-shrink_800_800/0/1630359799353?e=1702512000&v=beta&t=FavDYmXMsFUthMFXSB2w8TnQUjumERjOkz-8jAxu7Qc
-  imageURL: 'https://mario.wiki.gallery/images/thumb/2/27/SuperMarioParty_Waluigi.png/800px-SuperMarioParty_Waluigi.png',
-  description: 'default description'
+  imageURL: 'https://media.licdn.com/dms/image/C5603AQFiR8py9hDb2w/profile-displayphoto-shrink_800_800/0/1630359799353?e=1702512000&v=beta&t=FavDYmXMsFUthMFXSB2w8TnQUjumERjOkz-8jAxu7Qc',
+  description: "Waluigi is Luigi's lanky rival and Wario's partner. Waluigi made his debut in Mario Tennis, and since then, he has made playable appearances exclusively in the Super Mario franchise's spin-off titles. He makes an appearance as a playable character in all but one game in the Mario Tennis series."
 };
 
 export const introSlice = createSlice({
