@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npx tailwindcss -i ./src/styles/input.css -o ./dist/output.css",
+    "build": "npx tailwindcss -i ./src/styles/input.css -o ./dist/output.css && tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint ./src --report-unused-disable-directives",
     "format": "prettier -w ."
