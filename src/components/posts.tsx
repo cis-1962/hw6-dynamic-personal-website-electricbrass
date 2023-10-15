@@ -19,7 +19,7 @@ export default function Posts() {
   };
   return (
     <div className='m-4'>
-      <h1 className='text-white text-4xl' >Blog Posts</h1>
+      <h1 className='text-white text-4xl mb-4' >Blog Posts</h1>
       <input type='button' value='New Post' className='text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-md px-4 py-2'
       onClick={() => setEditMode(-1)}/>
       {editMode >= 0 &&
